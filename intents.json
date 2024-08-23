@@ -1,0 +1,50 @@
+{
+    "intents":[
+        {
+            "tag": "greeting",
+            "patterns": ["hi", "hello", "hey", "good morning", "good afternoon", "good evening"],
+            "responses": ["Hi there!", "Hello! How can I help you today?", "Good to see you!"]
+          },
+          {
+            "tag": "goodbye",
+            "patterns": ["bye", "goodbye", "see you later", "talk to you later"],
+            "responses": ["Goodbye!", "See you later!", "Have a nice day!"]
+          },
+          {
+            "tag": "personalization",
+            "patterns": ["what's your name","Who are you ??", "how old are you", "where are you from"],
+            "responses": ["My name is Mag, your assistant guide.","My self is Mag, your assistant guide.", "I don't have an age, but I'm always learning.", "I'm a digital assistant, so I don't have a physical location."]
+          },
+          {
+            "tag": "leave",
+            "patterns": ["leave", "leaves", "vacation", "sick leave", "casual leave", "leave balance"],
+            "responses": ["I can help you with leave-related queries. What would you like to know?"]
+          },
+          {
+            "tag": "salary",
+            "patterns": ["salary", "pay", "payroll", "salary slip", "pf", "tds"],
+            "responses": ["I can assist with salary-related questions. How can I help?"]
+          },
+          {
+            "tag": "benefits",
+            "patterns": ["benefits", "insurance", "medical", "gratuity", "pf", "esic"],
+            "responses": ["I can provide information about employee benefits. What are you looking for?"]
+          },
+          {
+            "tag": "policies",
+            "patterns": ["policy", "policies", "company policy", "hr policy", "code of conduct"],
+            "responses": ["I can help you find information about company policies. Which policy are you interested in?"]
+          },
+          {
+            "tag": "performance",
+            "patterns": ["performance", "appraisal", "review", "feedback", "promotion"],
+            "responses": ["I can provide information about performance management. How can I help?"]
+          },
+          {
+            "tag": "general_query",
+            "patterns": ["doubt", "question", "help", "issue", "problem"],
+            "responses": ["I'm here to help! Please describe your query or issue."]
+          }
+
+    ]
+}
