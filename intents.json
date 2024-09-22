@@ -1,50 +1,476 @@
 {
-    "intents":[
-        {
-            "tag": "greeting",
-            "patterns": ["hi", "hello", "hey", "good morning", "good afternoon", "good evening"],
-            "responses": ["Hi there!", "Hello! How can I help you today?", "Good to see you!"]
-          },
-          {
-            "tag": "goodbye",
-            "patterns": ["bye", "goodbye", "see you later", "talk to you later"],
-            "responses": ["Goodbye!", "See you later!", "Have a nice day!"]
-          },
-          {
-            "tag": "personalization",
-            "patterns": ["what's your name","Who are you ??", "how old are you", "where are you from"],
-            "responses": ["My name is Mag, your assistant guide.","My self is Mag, your assistant guide.", "I don't have an age, but I'm always learning.", "I'm a digital assistant, so I don't have a physical location."]
-          },
-          {
-            "tag": "leave",
-            "patterns": ["leave", "leaves", "vacation", "sick leave", "casual leave", "leave balance"],
-            "responses": ["I can help you with leave-related queries. What would you like to know?"]
-          },
-          {
-            "tag": "salary",
-            "patterns": ["salary", "pay", "payroll", "salary slip", "pf", "tds"],
-            "responses": ["I can assist with salary-related questions. How can I help?"]
-          },
-          {
-            "tag": "benefits",
-            "patterns": ["benefits", "insurance", "medical", "gratuity", "pf", "esic"],
-            "responses": ["I can provide information about employee benefits. What are you looking for?"]
-          },
-          {
-            "tag": "policies",
-            "patterns": ["policy", "policies", "company policy", "hr policy", "code of conduct"],
-            "responses": ["I can help you find information about company policies. Which policy are you interested in?"]
-          },
-          {
-            "tag": "performance",
-            "patterns": ["performance", "appraisal", "review", "feedback", "promotion"],
-            "responses": ["I can provide information about performance management. How can I help?"]
-          },
-          {
-            "tag": "general_query",
-            "patterns": ["doubt", "question", "help", "issue", "problem"],
-            "responses": ["I'm here to help! Please describe your query or issue."]
-          }
-
-    ]
+  "intents": [
+    {
+      "tag": "greeting",
+      "patterns": [
+        "hi",
+        "hello",
+        "hey",
+        "good morning",
+        "good afternoon",
+        "good evening"
+      ],
+      "responses": [
+        "Hi there! How can I assist you today?",
+        "Hello! What can I do for you today?",
+        "Good to see you! How may I help?"
+      ]
+    },
+    {
+      "tag": "goodbye",
+      "patterns": [
+        "bye",
+        "goodbye",
+        "see you later",
+        "talk to you later"
+      ],
+      "responses": [
+        "Goodbye! If you have more questions, feel free to ask anytime.",
+        "See you later! Have a great day!",
+        "Take care! Don't hesitate to reach out if you need anything."
+      ]
+    },
+    {
+      "tag": "propose_suggestion",
+      "patterns": ["I don't know how to propose"],
+      "responses": [
+        "I can help you with that. What do you think of [NAME]?",
+        "Have you considered writing her a heartfelt letter?",
+        "How about planning a special outing and proposing then?"
+      ]
+    },
+    {
+      "tag": "propose_followup",
+      "patterns": ["I'm still not sure", "I need more advice"],
+      "responses": [
+        "Would you like to brainstorm some ideas together?",
+        "Perhaps you could ask a friend for advice on proposing."
+      ]
+    },
+    {
+      "tag": "shy_user",
+      "patterns": ["I'm shy", "I don't know how to express myself"],
+      "responses": [
+        "Don't worry, everyone feels that way sometimes. Just be yourself and focus on expressing your feelings honestly.",
+        "Remember, sincerity is key. A heartfelt gesture can go a long way."
+      ]
+    },
+    {
+      "tag": "location_preference",
+      "patterns": ["I like [LOCATION]"],
+      "responses": [
+        "That's a great choice! How about proposing at [LOCATION]?"
+      ]
+    },
+    {
+      "tag": "like_girl",
+      "patterns": ["I like a girl"],
+      "responses": ["That's great! What's her name?"]
+    },
+    {
+      "tag": "girl_name",
+      "patterns": ["[NAME]"], 
+      "responses": ["That's a beautiful name! Why don't you propose to her?"]
+    },
+    {
+      "tag": "propose_question",
+      "patterns": ["I don't know how to propose"],
+      "responses": ["I can help you with that. What do you think of [NAME]?"]
+    },
+    {
+      "tag": "propose_response",
+      "patterns": ["she is amazing", "I like her"],
+      "responses": ["Great! You could write her a love letter or ask her out on a date."]
+    },
+    {
+      "tag": "leave_policy",
+      "patterns": [
+        "leave policy",
+        "how to apply for leave",
+        "leave types",
+        "vacation policy",
+        "tell me about leave options"
+      ],
+      "responses": [
+        "Our leave policy includes various types such as sick leave, casual leave, and vacation leave. Would you like to know more about a specific type? For detailed steps on how to apply, please visit the leave management section on our intranet.",
+        "We offer different types of leave, including vacation, sick leave, and casual leave. Do you want more details on any specific type?"
+      ],
+      "follow_up": [
+        "Would you like to know how to apply for a specific type of leave?",
+        "Can I provide you with more information on a particular leave type?"
+      ]
+    },
+    {
+      "tag": "salary_details",
+      "patterns": [
+        "salary breakdown",
+        "pay components",
+        "how is my salary calculated",
+        "salary structure",
+        "what is my net salary"
+      ],
+      "responses": [
+        "Your salary consists of various components such as basic pay, HRA, allowances, and deductions like PF and TDS. For a detailed breakdown, please check your salary slip or contact HR.",
+        "We have different components in the salary structure including base pay, bonuses, and deductions. Would you like to know more about a specific component?"
+      ],
+      "follow_up": [
+        "Do you want to know more about any particular component of your salary?",
+        "Would you like information on deductions or benefits included in your salary?"
+      ]
+    },
+    {
+      "tag": "benefits",
+      "patterns": [
+        "employee benefits",
+        "insurance policy",
+        "what benefits do I have",
+        "health insurance",
+        "retirement plans"
+      ],
+      "responses": [
+        "Our benefits package includes health insurance, life insurance, retirement plans, and more. For specific details, please refer to the benefits section on our HR portal.",
+        "We provide various benefits like health and life insurance, retirement plans, and more. Would you like to know more about any specific benefit?"
+      ],
+      "follow_up": [
+        "Are you looking for information on health insurance or retirement plans?",
+        "Do you need details on any other benefits?"
+      ]
+    },
+    {
+      "tag": "work_from_home",
+      "patterns": [
+        "work from home policy",
+        "remote work rules",
+        "can I work from home",
+        "hybrid work model",
+        "telecommuting policy"
+      ],
+      "responses": [
+        "We offer flexible work arrangements, including remote work and hybrid models. Please refer to the work-from-home policy on the HR portal for more details.",
+        "Our policy supports both remote work and hybrid models under certain conditions. Would you like to know the eligibility criteria?"
+      ],
+      "follow_up": [
+        "Would you like to know the eligibility criteria for working from home?",
+        "Can I assist you with details about setting up for remote work?"
+      ]
+    },
+    {
+      "tag": "grievance_handling",
+      "patterns": [
+        "report an issue",
+        "file a complaint",
+        "how to escalate a problem",
+        "grievance policy",
+        "issue reporting"
+      ],
+      "responses": [
+        "To report an issue or file a complaint, please follow the steps outlined in our grievance handling policy available on the HR portal.",
+        "Our grievance policy outlines the steps to report any issues you might have. Would you like to know the specific steps?"
+      ],
+      "follow_up": [
+        "Do you want to know how to escalate a complaint?",
+        "Would you like to understand the grievance redressal process in more detail?"
+      ]
+    },
+    {
+      "tag": "general_query",
+      "patterns": [
+        "doubt",
+        "question",
+        "help",
+        "issue",
+        "problem",
+        "I need assistance",
+        "can you help me"
+      ],
+      "responses": [
+        "I'm here to help! Please describe your query or issue.",
+        "How can I assist you today? Feel free to ask me any questions."
+      ]
+    },
+    {
+      "tag": "fallback",
+      "patterns": [],
+      "responses": [
+        "I'm not sure I understand. Could you please rephrase your question?",
+        "I'm here to help, but I need a bit more information. Can you clarify your question?",
+        "Sorry, I didn't quite catch that. Could you provide more details?"
+      ]
+    },
+    {
+      "tag": "leave_request",
+      "patterns": [
+        "I want to take leave",
+        "How to apply for leave?",
+        "I need a vacation",
+        "I want to take a vacation leave"
+      ],
+      "responses": [
+        "Sure, I can help you with that. Could you please specify the type of leave and the duration?",
+        "To proceed with your leave request, I need to know the type of leave and how many days you need."
+      ],
+      "context_set": "awaiting_leave_details"
+    },
+    {
+      "tag": "provide_leave_details",
+      "patterns": [
+        "I want a leave for vacation",
+        "I need a sick leave for 5 days",
+        "Leave for 3 days for personal reasons"
+      ],
+      "responses": [
+        "Got it. You want a {leave_type} leave for {leave_duration} days. Should I proceed with this request?",
+        "Thanks for the details! You're requesting {leave_type} leave for {leave_duration} days. Shall I submit this for approval?"
+      ],
+      "context_filter": "awaiting_leave_details",
+      "context_set": "confirm_leave_request"
+    },
+    {
+      "tag": "thanks",
+      "patterns": [
+        "Thanks",
+        "Thank you",
+        "That's all",
+        "Thanks a lot",
+        "Cheers"
+      ],
+      "responses": [
+        "You're welcome!",
+        "Happy to help!",
+        "Anytime!"
+      ],
+      "context_set": ""
+    },
+    {
+      "tag": "deny_leave",
+      "patterns": [
+        "No",
+        "Don't submit",
+        "Cancel it",
+        "No, change it"
+      ],
+      "responses": [
+        "Okay, I will change the request details. Please provide the new details."
+      ],
+      "context_set": "awaiting_leave_details"
+    },
+    {
+      "tag": "provide_leave_details",
+      "patterns": [
+        "I want a leave for 5 days",
+        "I need a vacation leave for 3 days",
+        "I am sick and need 2 days off",
+        "I need a leave for 1 week",
+        "I want to take a leave for a festival"
+      ],
+      "responses": [
+        "Got it. You want a {leave_type} leave for {leave_duration} days due to {reason}. Should I proceed with this request?"
+      ],
+      "context_set": "confirm_leave_request"
+    },
+    {
+      "tag": "confirm_leave",
+      "patterns": [
+        "Yes",
+        "Please submit",
+        "Yes, submit it",
+        "Go ahead",
+        "Okay"
+      ],
+      "responses": [
+        "Your leave request for {leave_duration} days due to {reason} has been submitted. The admin will validate it shortly."
+      ],
+      "context_set": ""
+    },
+    {
+      "tag": "leave_request",
+      "patterns": [
+        "I want to take a leave",
+        "Can I apply for leave?",
+        "I need some time off",
+        "I want a vacation",
+        "I need a leave"
+      ],
+      "responses": [
+        "Sure, I can help with that. Could you please tell me the reason for your leave and how many days you need?"
+      ],
+      "context_set": "awaiting_leave_details"
+    },
+    {
+      "tag": "leave_reason",
+      "patterns": [
+        "I'm feeling sick",
+        "Vacation for personal reasons",
+        "Family function",
+        "Traveling for a wedding",
+        "Medical reasons",
+        "Festival leave",
+        "Ganesh Chaturthi",
+        "Diwali",
+        "Christmas",
+        "Personal work"
+      ],
+      "responses": [
+        "Thanks for the details! You're requesting {leave_type} leave for {leave_duration} days due to {reason}. Shall I submit this for approval?",
+        "Got it! You want {leave_duration} days of {leave_type} leave due to {reason}. Should I go ahead and submit this?"
+      ],
+      "context_set": "confirm_leave_request"
+    },
+      {
+      "tag": "confirm_leave",
+      "patterns": [
+        "Yes, please submit",
+        "Yes, proceed",
+        "No, change it"
+      ],
+      "responses": [
+        "Your leave request for {leave_duration} days has been submitted. The admin will validate it shortly.",
+        "Okay, I will change the request details. Please provide the new details."
+      ],
+      "context_filter": "confirm_leave_request"
+    },
+    {
+      "tag": "salary_details",
+      "patterns": [
+        "salary breakdown",
+        "pay components",
+        "how is my salary calculated",
+        "salary structure",
+        "what is my net salary"
+      ],
+      "responses": [
+        "Your salary includes various components such as basic pay, HRA, allowances, and deductions like PF and TDS. For a detailed breakdown, please check your salary slip or contact HR.",
+        "We have several components in the salary structure, including base pay, bonuses, and deductions. Let me know if you need details on any specific component."
+      ],
+      "follow_up": [
+        "Do you need more information on any particular component of your salary?",
+        "Would you like details on the deductions or benefits included in your salary?"
+      ]
+    },
+    {
+      "tag": "benefits",
+      "patterns": [
+        "employee benefits",
+        "insurance policy",
+        "what benefits do I have",
+        "health insurance",
+        "retirement plans"
+      ],
+      "responses": [
+        "Our benefits package includes health insurance, life insurance, retirement plans, and more. For specific details, refer to the benefits section on our HR portal.",
+        "We offer a range of benefits like health and life insurance, retirement plans, and more. Is there a specific benefit you'd like to learn about?"
+      ],
+      "follow_up": [
+        "Are you interested in details about health insurance or retirement plans?",
+        "Do you need more information on any other benefits?"
+      ]
+    },
+    {
+      "tag": "work_from_home",
+      "patterns": [
+        "work from home policy",
+        "remote work rules",
+        "can I work from home",
+        "hybrid work model",
+        "telecommuting policy"
+      ],
+      "responses": [
+        "We support flexible work arrangements, including remote work and hybrid models. Check the work-from-home policy on the HR portal for more details.",
+        "Our policy accommodates both remote work and hybrid models under certain conditions. Would you like to know the eligibility criteria or how to apply?"
+      ],
+      "follow_up": [
+        "Would you like details on the eligibility criteria for working from home?",
+        "Can I help you with information about setting up for remote work?"
+      ]
+    },
+    {
+      "tag": "grievance_handling",
+      "patterns": [
+        "report an issue",
+        "file a complaint",
+        "how to escalate a problem",
+        "grievance policy",
+        "issue reporting"
+      ],
+      "responses": [
+        "To report an issue or file a complaint, please follow the steps outlined in our grievance handling policy available on the HR portal.",
+        "Our grievance policy explains how to report issues. Do you need information on the specific steps to take?"
+      ],
+      "follow_up": [
+        "Do you want guidance on how to escalate a complaint?",
+        "Would you like more details on the grievance redressal process?"
+      ]
+    },
+    {
+      "tag": "general_query",
+      "patterns": [
+        "doubt",
+        "question",
+        "help",
+        "issue",
+        "problem",
+        "I need assistance",
+        "can you help me"
+      ],
+      "responses": [
+        "I'm here to help! Please describe your query or issue.",
+        "How can I assist you today? Feel free to ask any questions.",
+        "What do you need help with? I'm ready to assist!"
+      ]
+    },
+    {
+      "tag": "thanks",
+      "patterns": [
+        "Thanks",
+        "Thank you",
+        "That's all",
+        "Thanks a lot",
+        "Cheers"
+      ],
+      "responses": [
+        "You're welcome!",
+        "Happy to help!",
+        "Anytime!",
+        "Glad I could assist you!"
+      ],
+      "context_set": ""
+    },
+    {
+      "tag": "provide_leave_details",
+      "patterns": [
+        "I want a leave for vacation",
+        "I need a sick leave for 5 days",
+        "Leave for 3 days for personal reasons"
+      ],
+      "responses": [
+        "Got it. You want a {leave_type} leave for {leave_duration} days. Should I proceed with this request?",
+        "Thanks for providing the details! You’re requesting {leave_type} leave for {leave_duration} days. Shall I submit this for approval?"
+      ],
+      "context_filter": "awaiting_leave_details",
+      "context_set": "confirm_leave_request"
+    },
+    {
+      "tag": "deny_leave",
+      "patterns": [
+        "No",
+        "Don't submit",
+        "Cancel it",
+        "No, change it"
+      ],
+      "responses": [
+        "Okay, I will adjust the request details. Please provide the new details."
+      ],
+      "context_set": "awaiting_leave_details"
+    },
+    {
+      "tag": "fallback",
+      "patterns": [],
+      "responses": [
+        "I'm not sure I understand. Could you please rephrase your question?",
+        "I'm here to help, but I need a bit more information. Can you clarify your question?",
+        "Sorry, I didn't quite catch that. Could you provide more details?",
+        "I didn't quite get that. Could you try asking your question in a different way?"
+      ]
+    }
+  ]
 }

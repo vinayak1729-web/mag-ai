@@ -7,6 +7,7 @@ from nltk.stem import WordNetLemmatizer
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, Activation, Dropout
 from tensorflow.keras.optimizers import SGD
+from tensorflow.keras.callbacks import EarlyStopping
 
 # Download necessary NLTK data
 nltk.download('punkt')
@@ -22,6 +23,8 @@ words = []
 classes = []
 documents = []
 ignore_letters = ['?', '!', '.', ',']
+context = {}  # To store ongoing conversation context
+context_responses = []  # To store context responses
 
 # Process intents and patterns
 for intent in intents['intents']:
@@ -32,15 +35,24 @@ for intent in intents['intents']:
         if intent['tag'] not in classes:
             classes.append(intent['tag'])
 
+        # Check for context and add it to context responses
+        if 'context' in intent:
+            context[intent['tag']] = intent['context']
+            context_responses.append(intent['responses'])
+
+# Add fallback intent handling
+if 'fallback' not in classes:
+    classes.append('fallback')
+
 # Lemmatize and sort the words and classes
 words = [lemmatizer.lemmatize(word.lower()) for word in words if word not in ignore_letters]
 words = sorted(set(words))
-
 classes = sorted(set(classes))
 
 # Save words and classes to files
 pickle.dump(words, open('words.pkl', 'wb'))
 pickle.dump(classes, open('classes.pkl', 'wb'))
+pickle.dump(context, open('context.pkl', 'wb'))  # Save context data
 
 # Initialize training data
 training = []
@@ -86,8 +98,11 @@ model.add(Dense(len(train_y[0]), activation='softmax'))
 sgd = SGD(learning_rate=0.01, decay=1e-6, momentum=0.9, nesterov=True)
 model.compile(loss='categorical_crossentropy', optimizer=sgd, metrics=['accuracy'])
 
-# Train the model
-model.fit(train_x, train_y, epochs=200, batch_size=5, verbose=1)
+# Use early stopping to avoid overfitting
+early_stopping = EarlyStopping(monitor='loss', patience=10, restore_best_weights=True)
+
+# Train the model with early stopping
+model.fit(train_x, train_y, epochs=200, batch_size=5, verbose=1, callbacks=[early_stopping])
 
 # Save the trained model in Keras format
 model.save('magbot_model.keras')  # Option 1: Save in the native Keras format
